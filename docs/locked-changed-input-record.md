@@ -76,9 +76,9 @@ Only the minimum investment-grade bond allocation is changed. The investment uni
 
 ## 4. PRE-RUN LOCK
 
-**Prediction GitHub commit:** [Add commit URL after committing]
+**Prediction GitHub commit:** (https://github.com/alinam06/FIN439-Project2/commit/61df82697e03946f6181c8537a712310f122650e)
 
-**Commit date and time:** [Record from GitHub]
+**Commit date and time:** 11:12 Eastern Time
 
 I finalized and committed Section 3 before executing the changed-input experiment.
 
