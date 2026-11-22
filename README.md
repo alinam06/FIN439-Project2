@@ -6,6 +6,18 @@ The analysis and decision are mine. This project is for educational use only and
 
 BoilerPortfolio is an independent FIN 439 investment decision-support application. It evaluates whether a proposed allocation meets an investor’s objective and mandate, how sensitive it is to assumptions, and what evidence a committee needs before authorizing capital.
 
+
+## Open BoilerPortfolio
+
+**Live application:** https://boilerportfolio-fin439.streamlit.app/
+
+**Source code:** [GitHub repository](https://github.com/alinam06/FIN439-Project2)
+
+The public application opens in Training and validation mode.
+The reviewed ETF analysis requires authorized historical market data,
+which are not included in the public repository.
+
+
 ## Investment recommendation
 
 **Reject deployment of BIL, IEF, LQD, and VT under the reviewed ETF assumptions. Authorize $0 in live capital.**
