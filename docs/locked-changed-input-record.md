@@ -6,7 +6,7 @@
 
 **Project:** BoilerPortfolio — Investment Management Application
 
-**Date and time of independent prediction:** 2026-11-22, 10:30 Eastern Time]
+**Date and time of independent prediction:** 2026-11-22, 10:30 Eastern Time
 
 **AI use during prediction:** None. I completed the prediction and financial reasoning independently, before executing the changed-input experiment.
 
@@ -86,37 +86,37 @@ I finalized and committed Section 3 before executing the changed-input experimen
 
 ## 5. ACTUAL EXPERIMENT RESULTS — COMPLETE ONLY AFTER THE PREDICTION IS COMMITTED
 
-**Experiment date and time:** [YYYY-MM-DD, HH:MM Eastern Time]
+**Experiment date and time:** [2026-11-22, 11:23 Eastern Time]
 
 **Changed input actually applied:** Minimum investment-grade bonds increased from 25% to 35%.
 
-**Actual maximum feasible annual net return:** [____ %]
+**Actual maximum feasible annual net return:** 6.35%
 
-**Actual change from baseline:** [____ basis points]
+**Actual change from baseline:** -30 bp
 
-**Actual shortfall or headroom relative to the 7.00% objective:** [____ basis points]
+**Actual shortfall or headroom relative to the 7.00% objective:** 65 bp
 
-**Did the optimizer produce a feasible allocation at the original target?** [Yes / No]
+**Did the optimizer produce a feasible allocation at the original target?** No
 
-**Observed allocation or constraint effects:** [Describe only results actually displayed by the application.]
+**Observed allocation or constraint effects:** ncreasing the minimum investment-grade bond allocation reduced the maximum feasible expected annual net return. The investment proposal remained infeasible under the client's original 7% objective.
 
-**Actual committee decision:** [____]
+**Actual committee decision:** REJECT
 
-**Result evidence:** [Reference permitted screenshots, saved outputs or a local evidence record; do not publish restricted ETF data.]
+**Result evidence:** Investment Overview screenshot showing the custom scenario and 6.35% return ceiling.
+<img width="732" height="669" alt="Screenshot 2026-11-22 at 11 26 09 AM" src="https://github.com/user-attachments/assets/a37b0464-e7ea-4649-b022-a46587a80473" />
 
 ## 6. Prediction-versus-actual reconciliation
 
 | Question | My finding |
 |---|---|
-| Was my predicted direction correct? | [Answer] |
-| How close was my numerical prediction? | [Predicted vs. actual; include basis-point difference] |
-| Did the decision change as predicted? | [Answer] |
-| What explains any difference? | [Financial reasoning] |
-| What did I learn about the optimizer or mandate? | [Your independent reflection] |
+| Was my predicted direction correct? | Yes |
+| How close was my numerical prediction? | It was accurate. |
+| Did the decision change as predicted? | It was still reject. |
+| What did I learn about the optimizer or mandate? | I learned that the optimizer cannot always find a feasible portfolio, even when assumptions improve. Meeting the mandate's constraints is more important than simply maximizing returns. |
 
 **Final interpretation:**
 
-[Write 3–5 sentences explaining what the experiment revealed about the investment proposal, the client's mandate and the reliability of the financial model.]
+The experiment showed that although the model responded to the changed assumptions as predicted, the investment proposal still failed to meet the client's mandate. The portfolio's expected return remained below the required target, so the investment decision stayed **REJECT**. This demonstrates that improving one financial assumption does not necessarily make a portfolio feasible when multiple constraints must be satisfied. The results also increased my confidence in the model because the actual changes closely matched my numerical prediction, suggesting the optimizer responded consistently to the inputs.
 
 ## 7. Evidence and chronology
 
