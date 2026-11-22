@@ -1,0 +1,3 @@
+# ETF decision evidence status
+
+The private November 21, 2026 ETF snapshot was reviewed and integrated. It contains 61 aligned monthly prices per fund and supports 36- and 60-month risk estimates. No raw prices, monthly rows, or private derived reports are included in the public project. The [private reproduction instructions](../README.md#optional-authorized-data-and-online-research) generate both requested local Markdown reports and the monthly return file. A new session starts in Reviewed ETF snapshot when the authorized pair is present. A clean public checkout starts in Training and validation, with the documented ETF conclusion shown separately.
