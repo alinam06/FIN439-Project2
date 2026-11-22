@@ -120,10 +120,11 @@ The experiment showed that although the model responded to the changed assumptio
 
 ## 7. Evidence and chronology
 
-**Pre-run prediction commit URL:** [Link]
+**Pre-run prediction commit URL: https://github.com/alinam06/FIN439-Project2/commit/61df82697e03946f6181c8537a712310f122650e
 
-**Post-run results commit URL:** [Link]
+**Post-run results commit URL: https://github.com/alinam06/FIN439-
+Project2/commit/2d7831df74e5f8ae41fbccf7048c9ea5c3f78167
 
-**Experiment evidence location:** [Link or permitted local reference]
+**Experiment evidence location:** Located in my Github repository.
 
 The pre-run commit preserves the original prediction. The subsequent commit adds the actual results and reconciliation without modifying the original prediction.
