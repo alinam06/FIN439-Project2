@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+.DS_Store
+.Rhistory
+.env
+.env.*
+.streamlit/secrets.toml
+
+outputs/reproduced.md
+/data/etf-prices.csv
+/data/etf-metadata.json
+/data/baa10y-archive.json
+/data/baa10y-manifest.json
+/data/raw/
+/outputs/etf-analysis-results.md
+/outputs/historical-window-comparison.md
+/outputs/etf-monthly-returns.csv
