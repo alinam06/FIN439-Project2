@@ -16,6 +16,20 @@ My final investment recommendation is **REJECT the reviewed BIL, IEF, LQD and VT
 
 AI-assisted output was subject to review rather than accepted as proof of correctness. The validation evidence below distinguishes code tests, executed calculations, observed failures and checks that remain incomplete.
 
+## AI Prompt Examples and Reflection
+
+I used ChatGPT and Codex as development and research assistants while retaining responsibility for the financial analysis and final investment recommendation.
+
+Examples of the tasks I gave AI included asking Codex to implement and test the portfolio calculation engine against known-answer exercises, investigate the Streamlit stress-page error, and prepare documentation from existing project evidence. These are summaries of my requests rather than verbatim prompt transcripts.
+
+AI was particularly useful for organizing the multi-file application, developing automated tests, and identifying possible technical corrections. However, successful code generation did not guarantee that every application page worked correctly. During browser testing, I encountered a `TypeError` on the stress-testing page, which required a correction and regression testing.
+
+I also used financial checks rather than relying solely on AI explanations. The Lab 14 known answers provided reference results for return and volatility calculations. In the reviewed ETF analysis, I checked the weighted-return ceiling against the client's objective and used a separately committed, AI-off changed-input prediction to test the effect of tightening the investment-grade bond requirement.
+
+My main takeaway is that AI can accelerate technical implementation and documentation, but the investment decision must follow from the actual financial evidence. In this project, the model's inability to reach the 7.00% net objective supported a REJECT decision even though the application could generate illustrative portfolio allocations.
+
+The reported automated tests and precommitted experiment are documented separately. They do not establish that an independent fresh-checkout test was completed.
+
 ## 2. Financial Known-Answer Tests
 
 The project retains the original Lab 14 training fixtures to verify core portfolio-return and risk calculations independently of downloaded market data.
