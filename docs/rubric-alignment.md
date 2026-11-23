@@ -1,115 +1,298 @@
-# FIN 439 Project 2 official rubric alignment
+# FIN 439 Project 2 — Rubric Alignment and Evidence Map
 
-This audit applies the eight base requirements and six grading categories supplied by the student. It is an evidence map, without a grade estimate. The public classroom result is illustrative and non-investable. The reviewed ETF decision is REJECT with 0% live deployment. Paper-testing BoilerPortfolio is a separate process recommendation. No Git metadata was available in the inspected working folder, so repository access, commit chronology and uploaded contents remain unverified.
+**Project:** BoilerPortfolio — Investment Management Application
 
-## Eight base requirements
+**GitHub repository:** https://github.com/alinam06/FIN439-Project2
 
-| # | Requirement and status | Evidence and smallest remaining action |
-| --- | --- | --- |
-| 1 | Stranger can run app from README · **NOT VERIFIED** | [README](../README.md), [dependencies](../requirements.txt), [app](../app.py), [validation](../outputs/validation-summary.md). Offline public-layout AppTest passed. A fresh dependency install, browser start, and independent GitHub run still need a real reviewer. |
-| 2 | Original Lab 13 mandate, universe, benchmark and risk · **COMPLETE** | Lab 13 course file section 6 was compared with [default mandate](../src/portfolio.py), [universe](../src/assumptions.py), [financial methodology](../README.md#financial-methodology), and [executed result](../outputs/version_1_results.md). The 60/40 benchmark and volatility convention are documented modeling choices. The annual loss limit is unresolved by design. Carry that open decision into the memo. |
-| 3 | Two transparent baselines and constrained portfolio with verdicts · **COMPLETE** | [Executed baseline table](../outputs/version_1_results.md), [financial engine](../src/portfolio.py), Portfolio Builder and Committee Decision → Mandate and methodology. Equal weight fails the company cap and return objective. The 60/40 mix fails reserves and the return objective. The optimized candidate is Unverified. |
-| 4 | One point-in-time signal and data card · **COMPLETE for the documented date** | [Signal evidence](../outputs/signal-decision-evidence.md) and [data card](signal-data-card.md). The dated, contemporaneously consulted FRED table supports the November 21, 2026 decision only. An authorized archive would strengthen historical replay and independent revision testing. The result and complete data card are tracked candidates in the public package check. Live GitHub publication was not verified. The public app displays unavailable when no archive is supplied. |
-| 5 | Estimate, window, cost and constraint stresses with stop conditions · **PARTIAL for submission** | [Public classroom stress](../outputs/stress-test-results.md), [methodology](stress-testing-methodology.md), [ETF evidence status](../outputs/etf-analysis-status.md). All four dimensions were run locally, including the separate private `outputs/historical-window-comparison.md`. The public files alone do not reproduce the actual window comparison. Use the [authorized rerun instructions and instructor question](#historical-window-reproduction-and-permissions). |
-| 6 | Locked Changed-Input Record · **MISSING** | Classroom export and replay are available in [stress methodology](stress-testing-methodology.md). The student must write the prediction and predicted decision effect with AI off, commit that prediction before running the experiment, then record actual results and decision effect with commit provenance. Existing regression cases are separate. |
-| 7 | Recommendation, range, monitoring and reversal triggers · **COMPLETE in app** | [Committee policy](../src/committee.py) and [committee review](../app.py). The base classroom proposal is ILLUSTRATIVE ONLY with 0% live allocation. The actual reviewed ETF universe is REJECT under current assumptions. Committee Decision shows modeled sleeve extrema, triggers and stop rules. Adopt and defend the recommendation in the student's memo and videos. |
-| 8 | Two opening disclosures in README, memo and each video · **PARTIAL** | [README](../README.md) opens with the named tools and uses, student ownership, educational purpose and investment-advice disclaimer. The student should verify that the list of tools and uses is exhaustive and use both statements at the start of the final memo and all three videos and transcripts. Those items are absent here. |
+**Live application:** https://boilerportfolio-fin439.streamlit.app/
 
-## Independent financial reconciliation
+## Project Status and Investment Conclusion
 
-The original investor is a fictional 45-year-old executive with $5 million, a 15-year horizon and a 7% annual net objective. The mandate is fully invested and long-only, with no borrowing, shorting or derivatives. The limits are 25% minimum investment-grade bonds, 10% cash/liquid government reserve, an 8% nonexempt single-company cap and 90% five-business-day redeemability. The client specified annual rebalancing. Diversified funds and U.S. Treasuries have concentration exemptions. Annual portfolio volatility is the modeled risk measure. It gauges variability and establishes no client-authorized annual loss limit.
+BoilerPortfolio is an investment decision-support application developed for FIN 439 Project 2.
 
-Using the five classroom sleeves in report order, independently compute annual net return as the weighted forward returns minus 15 bp, and annual volatility as the square root of the double sum of weight products × volatilities × correlations. Reusing the unrounded optimizer weights only for verification gives:
+The final investment recommendation is **REJECT** for the evaluated BIL, IEF, LQD and VT universe under the original client's mandate and reviewed financial assumptions. The proposed live capital authorization is **$0**.
 
-| Portfolio | Expected annual net | Annual volatility | Modeled mandate result |
-| --- | ---: | ---: | --- |
-| 20% in each of five sleeves | 5.81% | 8.67% | Fails company cap and return |
-| 60% global equity / 40% IG bond fund | 6.65% | 10.46% | Fails reserve and return |
-| Constrained minimum volatility | 7.00% | 12.09756% | Unverified with binding 10% reserve and 7% return floor |
+The application separately demonstrates a reproducible illustrative classroom portfolio. A successful classroom optimization is not an investment recommendation. Paper-testing the evaluation process is a separate proposal that carries no trading authority.
 
-An independent optimality check used the positive-definite covariance and the binding constraints. The infinity-norm stationarity residual was below 2 × 10⁻¹⁶, with positive multipliers for the zero T-bill weight, reserve floor and return floor.
+This document maps the project's evidence to the eight base requirements and six grading categories. It is not a grade estimate.
 
-The constrained weights are approximately 0% T-bills, 10% Treasury note, 16.98% IG fund, 70.10% global equity and 2.93% fictional stock. The bond floor has slack at 26.98%. The model counts the Treasury note toward both bonds and reserve, preserving a 100% total allocation. At the classroom ceiling, the return-maximizing weights are 10% Treasury note, 15% IG fund, 67% global equity and 8% fictional stock. The first fills the reserve, the second completes the bond floor, and the higher-return fictional stock reaches its cap. This gives 7.26% gross less 0.15% annual expense = **7.11% net**. These assumptions are classroom values.
+## 1. Eight Base Requirements
 
-The separate ETF experiment uses BIL, IEF, LQD and VT, with BIL provisionally reserve eligible and IEF and LQD provisionally bond eligible. At its ceiling, the higher-return bond LQD fills the 25% floor, BIL fills 10% reserves, and VT occupies 65%. The weighted assumed annual return is 6.80% gross of investor fee less 0.15% = **6.65% net**, a 35 bp shortfall. Fund-level expenses are already reflected in the documented ETF forward assumptions. Historical sample covariance from monthly adjusted returns is multiplied by 12. That matrix determines volatility and can change the optimizer weights. The ceiling is driven by the universe, eligibility, forward assumptions and cost. See [ETF methodology](data-methodology.md).
+| # | Requirement | Current status | Supporting evidence |
+|---|---|---|---|
+| 1 | Runnable application from README | **Implemented** | [README](../README.md), [application](../app.py), [dependencies](../requirements.txt), [automated tests](../outputs/validation-summary.md). Public Streamlit deployment is available, but a fresh independent checkout has not been established. |
+| 2 | Original mandate, investment universe, benchmark and risk | **Complete** | [Client mandate](../README.md#client-mandate-and-investment-universe), [financial engine](../src/portfolio.py), [ETF methodology](data-methodology.md). |
+| 3 | Two transparent baselines and constrained portfolio | **Complete** | [Classroom results](../outputs/version_1_results.md), Portfolio Builder, and [investment committee memo](decision-memo.md). The reviewed ETF model explicitly reports no feasible constrained portfolio at the original target. |
+| 4 | Point-in-time signal and data card | **Complete for documented decision date** | [BAA10Y evidence](../outputs/signal-decision-evidence.md), [signal data card](signal-data-card.md), [economic signal module](../src/economic_signal.py). Historical-vintage reconstruction remains limited. |
+| 5 | Estimate, historical-window, cost and constraint stresses | **Implemented; private ETF reproduction limited** | [Stress methodology](stress-testing-methodology.md), [classroom stress results](../outputs/stress-test-results.md), [ETF evidence status](../outputs/etf-analysis-status.md), and [validation report](validation-and-ai-use.md). |
+| 6 | Locked Changed-Input Record | **Completed and documented** | [Locked record](locked-changed-input-record.md), [pre-run prediction commit](https://github.com/alinam06/FIN439-Project2/commit/61df82697e03946f6181c8537a712310f122650e), and [post-run results commit](https://github.com/alinam06/FIN439-Project2/commit/2d7831df74e5f8ae41fbccf7048c9ea5c3f78167). |
+| 7 | Recommendation, range, monitoring and reversal triggers | **Complete in analysis and documentation** | [Decision memo](decision-memo.md), [investment judgment](investment-judgment.md), [committee logic](../src/committee.py). |
+| 8 | Two opening disclosures in README, memo and videos | **Documented** | [README](../README.md), [decision memo](decision-memo.md), [validation and AI use](validation-and-ai-use.md), and video scripts. Confirm the actual recordings begin with both disclosures. |
 
-**Committee ask:** paper-test the evaluation process and assign owners to verify instrument eligibility, issuer concentration and exemptions, derivatives/leverage, five-day liquidity, implementation and annual loss tolerance. The default modeled component ranges are T-bills 0–2.89%, Treasury note 7.11–25.14%, IG bond fund 0–18.67%, global equity 63.33–75.00%, and fictional stock 0–8.00%. These are independent mathematical extrema, with no implication that their endpoints form a feasible combined allocation. The live allocation range is 0–0%. Review annually and after material assumptions, eligibility or liquidity changes. Stop on invalid inputs, a ceiling below target or modeled hard-rule breaches. Reconsider live implementation after those checks clear, the client defines acceptable loss, and the committee approves.
+**Evidence status note:** File links to newly drafted documents should be checked after those documents are committed to GitHub. A recorded or drafted deliverable is not automatically evidence of a successfully uploaded or accessible submission.
 
-## Signal and stress evidence
+## 2. Original Client Mandate
 
-The official daily, non-seasonally-adjusted BAA10Y spread is expressed in percentage points. November 19 was the last observation, and FRED shows a November 20 update before the November 21 analysis cutoff. The contemporaneously consulted table independently yields +12 bp across 21 numeric observations from October 21 through November 19. The explicit missing November 11 value was omitted. The signal triggers credit and equity downside review, leaving expected returns, covariance and weights unchanged. This suffices for one dated monitoring signal. It does not establish individual publication timestamps, a backtest or historical vintage reproducibility. See the [official dated table](https://fred.stlouisfed.org/data/BAA10Y), [series and permissions notes](https://fred.stlouisfed.org/series/BAA10Y) and [optional archive collection instructions](signal-data-card.md#reproduce-with-an-authorized-export).
+The fictional Lab 13 investor is a 45-year-old executive with $5 million to invest over 15 years, intending to retire at age 60.
 
-| Required stress dimension | Executed implication |
-| --- | --- |
-| Estimates | Classroom equity deterioration lowers the held result to 5.54% net with 15.03% volatility and the ceiling to 5.61%, stopping reoptimization at the original target. A correlation-only increase raises risk while leaving the ceiling fixed. |
-| Historical window | The private ETF 36- and 60-month runs hold the capture date, mandate, return assumptions and costs fixed. Volatility and the separate diagnostic allocation change. The 6.65% ceiling and original-target REJECT remain unchanged. |
-| Costs | At 25 bp recurring cost, the original classroom weights fall to 6.90% net. The reoptimized mix reaches 7.00% with only about 1 bp of headroom, before the separate one-time $1,018.27 transition estimate. |
-| Constraints | A 15% reserve floor makes the held classroom mix fail even though its modeled return stays 7.00%. A separate reoptimized mix remains feasible with 12.16% volatility. Combining adverse assumptions lowers the ceiling to 5.25%, stopping the process. |
+The investment objective is a **7.00% annual net return**.
 
-Classroom stress labels **Due diligence** and **Defer** are process states. The current investment policy gives a feasible reviewed alternative HOLD. A classroom success stays ILLUSTRATIVE ONLY. The evaluation process may be paper-tested separately. A failed held allocation and any fresh proposed mix must be assessed separately.
+| Requirement | Original policy |
+|---|---|
+| Portfolio construction | Fully invested and long-only |
+| Borrowing, short selling and derivatives | Prohibited |
+| Minimum investment-grade bonds | 25% |
+| Minimum cash or highly liquid government securities | 10% |
+| Nonexempt company concentration | Maximum 8% |
+| Five-business-day redeemability | Minimum 90% |
+| Benchmark | 60% global equities / 40% investment-grade bonds |
+| Risk measure | Annualized portfolio standard deviation |
+| Rebalancing | Annually |
+| Acceptable annual loss | Unresolved |
 
-## Historical-window reproduction and permissions
+The mandate is unchanged by hypothetical scenario analysis.
 
-- **Simplest independent rerun:** During November 2026, a reviewer with their own permitted Alpha Vantage access exports BIL, IEF, LQD and VT with `function=TIME_SERIES_MONTHLY_ADJUSTED`, `datatype=csv` and their own API credential. Save the original responses locally under `data/raw/` using the filenames in [data/README.md](../data/README.md). Run the [existing preparation and report command](../README.md#optional-authorized-data-and-online-research) using the actual capture timestamp. It keeps the same analysis end month (October 2026), aligns 61 completed monthly closes and estimates 36- and 60-month covariance from nested return windows, with the same mandate, costs and forward assumptions. A new November capture may include revisions and supports a method rerun, without proving byte-for-byte reproduction or availability on November 21, 2026. The current code rejects December or later captures for the fixed October endpoint because it requires the last close to be in the latest completed month. The original capture timestamp belongs only to the original snapshot. Exact verification requires the same snapshot under authorized access. [Alpha Vantage endpoint and parameters](https://www.alphavantage.co/documentation/#monthlyadj) · [Alpha Vantage terms](https://www.alphavantage.co/terms_of_service/)
-- **Source replacement:** No public redistribution license was established for the same four adjusted ETF histories. The CC BY research dataset *Treasury Bond Return Data Starting in 1962* is a possible separate, instructor-approved Treasury-only window exercise. It contains yield-derived government bond returns and does not represent BIL, IEF, LQD, VT or their joint covariance. No substitute experiment was run. [Dataset paper and license](https://www.mdpi.com/2306-5729/4/3/91)
-- **Aggregate evidence:** If sharing is expressly authorized, a minimal review package would supply the two annual covariance matrices in ticker order, dates and sample sizes, annualization, fixed weights and assumptions, modeled risk, and decision effect. This would let a reviewer recompute portfolio risk and the optimizer result. Return history is needed to independently re-estimate the matrices. Keep the private reports and matrices excluded until the applicable license permits the specific sharing channel.
-- **Course approval:** Ask: “For the historical-window requirement, will you accept a reproducible 36/60-month run using your own authorized November 2026 Alpha Vantage exports, with my original ETF report kept private and any revisions disclosed? If the submission must be publicly reproducible without a data account, may I use a separate CC BY Treasury-only window comparison, and must it cover the full portfolio?” A synthetic fixture verifies the calculation path only. It would need explicit approval as a substitute and must be labeled synthetic.
+The model can verify certain numerical constraints, but instrument eligibility, look-through exposures, redemption evidence and the client's acceptable annual loss still require independent assessment.
 
-### Public BAA10Y evidence check
+## 3. Financial Reconciliation
 
-A temporary public-package check found [the executed November 21 result](../outputs/signal-decision-evidence.md) and [the full data card](signal-data-card.md) present, mutually linked, and outside the ignore list. The public FRED table was accessible and supports the reported **+12 bp / Review** result. The raw series and private ALFRED export stay outside the public package. No Git remote was available in the authoritative folder, so the published GitHub checkout and its permissions remain unverified.
+### Classroom Training and Validation Model
 
-## Edition A/B evidence boundary
+The classroom model uses five illustrative sleeves, including a fictional individual company used to test concentration constraints.
 
-The earliest inspectable baseline is the Lab 13 mandate, Lab 14 known answers, the frozen [Version 1 report](../outputs/version_1_results.md), and the early entries of the [validation chronology](../outputs/validation-summary.md). That baseline is credible evidence for an Edition A description if it matches the student's actual course work. The final integrated application is evidence for the Edition B description, including provenance validation, dated signal, hypothetical and ETF window stresses, shared portfolio state, committee export and workflow tests. The original A/B commit identifiers and historical workflow are unverified. The student should supply only recoverable Git history or contemporaneous evidence and describe the boundary in the final memo or validation narrative. These editions are described within one final submission.
+| Portfolio | Expected annual net return | Annual volatility | Assessment |
+|---|---:|---:|---|
+| Equal weight across five sleeves | 5.81% | 8.67% | Fails the return objective and individual-company cap |
+| 60% global equity / 40% IG bond fund | 6.65% | 10.46% | Fails return and reserve requirements |
+| Constrained minimum-volatility candidate | 7.00% | 12.10% | Meets modeled numerical requirements; other investment evidence remains unverified |
 
-## Six official rubric categories
+The default illustrative constrained allocation is approximately:
 
-| Category | Maximum | Decision-ready standard and existing evidence | Gap and necessary action |
-| --- | ---: | --- | --- |
-| Problem definition and decision usefulness | 45 | Name the committee audience, investor, horizon, constraints, action and explicit approval request. The dashboard, [README](../README.md), [mandate report](../outputs/version_1_results.md) and Edition evidence above cover the core question. | State the authentic A/B boundary and the decision changed by the evidence in the final memo. |
-| Data integrity and traceability | 45 | Every material input has source, date, definition, transformation, exclusions and reproducible lineage. [ETF methodology](data-methodology.md), [signal card](signal-data-card.md) and [dated signal result](../outputs/signal-decision-evidence.md) distinguish forecast, training data and observations. | Add artifact/version provenance to the manifest. Preserve licensing. A real historical archive replay remains open. |
-| Financial soundness and judgment | 60 | Tie units, net-return bridge, risk, baselines, constraints, ranges, stress evidence and veto conditions to a defensible action. See the reconciliation and [stress results](../outputs/stress-test-results.md). | State the reviewed ETF rejection as the investment conclusion and the paper test as a separate process recommendation. Provide permitted evidence for the actual window comparison. |
-| Technical execution and usability | 45 | A reviewer can install, reproduce the visible result, navigate the core workflow and handle missing data without credentials. [README](../README.md), application and [tests](../tests/) support the workflow. | Run the browser checklist and obtain an independent clean public checkout result. |
-| Validation, sensitivity and reproducibility | 75 | Known answers, independently checked material calculations, failure tests, executed stress, AI-output review, and a genuinely precommitted human prediction. See the [validation log](../outputs/validation-summary.md). | Complete the locked record and independent cold run. Document the student's AI-output checks and the evidence they used to accept or correct claims. |
-| Professional communication | 30 | The README, memo, manifest, transcripts and three distinct videos accurately identify the model, evidence, decision and limitations for their audiences. | Author the memo and AI-use account, finish the manifest, record and transcribe three distinct videos, and verify all video and repository links from the grader's perspective. |
-| **Total** | **300** | Evidence map only | No grade inferred. |
+- Treasury bills: 0%
+- Treasury note: 10%
+- Investment-grade bond fund: 16.98%
+- Global equity: 70.10%
+- Fictional company: 2.93%
 
-## Validation and reproducibility inventory
+The classroom return-maximizing feasible composition produces approximately **7.11% net** after the assumed 15 bp recurring investor fee.
 
-- `tests/test_lab14.py` verifies known-answer benchmark, equal-weight and inverse-volatility calculations and a changed correlation check. `test_portfolio.py`, `test_stress.py`, `test_etf_portfolio.py`, `test_etf_actual.py` and `test_integrated_workflow.py` cover modeled financial claims, actual private data when supplied, missing inputs and state changes.
-- `test_economic_signal.py`, `test_historical.py` and `test_workspace.py` cover as-of filtering, exclusions, revision fixtures, historical import and missing-data behavior. `test_app.py`, `test_product_navigation.py`, `test_risk_routing.py` and `test_analyst.py` cover navigation, visible findings, and deterministic answers. These answer checks are software evidence. The student's own audit of claims produced during AI-assisted development still needs documentation.
-- The manual browser error was `TypeError: stress_view() takes 1 positional argument but 3 were given`. The original browser process was not identified. An AppTest substituting the one-argument renderer reproduced the exact failure. Classroom routing now invokes the classroom renderer with the mandate for the default allocation and the explicitly supported named active allocation for custom weights. ETF historical data and ETF stress follow their separate paths. The [validation chronology](../outputs/validation-summary.md#risk-routing-and-full-dashboard-regression) preserves the original correction and regression result.
-- Highest-risk unresolved claims are actual security and five-day redemption eligibility, loss tolerance, robustness of expected returns and of volatility to downside events, and whether the public grader can reproduce everything they see. The model and signal evidence support diligence, with no execution authority.
-- The core loads optional data relative to the repository and follows a credential-free default with no mandatory data requests. The [requirements](../requirements.txt) pins were audited. Their direct release floor is Python 3.12, with project support documented for CPython 3.14 and tests executed on 3.14.7 arm64 macOS. No alternative platform or major/minor interpreter run is established.
+These results demonstrate the model's calculation and constraint handling. They are not proposed live investments.
 
-## GitHub submission checklist
+[Classroom calculations](../outputs/version_1_results.md) · [Investment judgment evidence](investment-judgment.md)
 
-| Include | Status |
-| --- | --- |
-| `README.md`, `app.py`, `requirements.txt`, `.gitignore`, `.streamlit/config.toml`, `src/*.py`, `tests/*.py`, `data/README.md` | Present. Check them from a real public clone. |
-| `docs/data-methodology.md`, `docs/signal-data-card.md`, `docs/stress-testing-methodology.md`, `docs/rubric-alignment.md` | Present. |
-| `outputs/version_1_results.md`, `outputs/stress-test-results.md`, `outputs/signal-decision-evidence.md`, `outputs/etf-analysis-status.md`, `outputs/validation-summary.md` | Present. These are the public evidence artifacts. |
-| `docs/decision-memo.md` and `docs/validation-and-ai-use.md` | Missing. Student writes and approves the memo and documents actual AI-output verification and any corrected claims. |
-| Submission manifest, for example `docs/submission-manifest.md` if the course specifies no filename | Missing. Index the exact commit, deliverables, public model, private evidence access route, transcript paths and checked video links. |
-| Locked Changed-Input Record and independent cold-run evidence | Missing. Preserve actual timestamps, commit provenance, cold-run commands, observations and runner independence. |
-| Three video transcripts and three YouTube links | Missing or unverified outside this folder. Include real transcripts and viewable links in the manifest. Begin each recording and transcript with both disclosures. |
+### Reviewed ETF Model
 
-Exclude `.venv/`, `__pycache__/`, `.DS_Store`, `.Rhistory`, credentials or logs containing them, `.env*`, `.streamlit/secrets.toml`, and incidental regenerated outputs. Exclude all of `data/raw/`, `data/etf-prices.csv`, `data/etf-metadata.json`, `data/baa10y-archive.json`, `data/baa10y-manifest.json`, the private ETF and historical-window Markdown reports, and the ETF monthly-return CSV absent express authorization. Apply the same restrictions to screenshots, recordings and derived exports. Inspect both the staged list and repository history before sharing.
+The actual Project 2 investment universe consists of BIL, IEF, LQD and VT.
 
+| ETF | Annual forward-return assumption |
+|---|---:|
+| BIL | 3.50% |
+| IEF | 4.25% |
+| LQD | 5.00% |
+| VT | 8.00% |
 
-## Independent cold-run handoff
+The assumptions are forward-looking scenarios after embedded fund expenses and before the recurring 15 bp investor charge. They are distinct from historical sample returns.
 
-Give the reviewer the actual repository URL and final commit identifier. Ask them to clone into an empty folder on their own machine, create the README's CPython 3.14 environment, install the pins and launch the app from that clone. They should use the classroom mode, follow the README walkthrough, compare the visible ceiling, action and exported summary with the public evidence, and record any disagreements. Preserve their actual date, operating system, Python version, commit, commands, observed results and author attribution. Record failures if any occur.
+At the original 25% investment-grade bond minimum and 10% reserve requirement, the modeled maximum-return feasible composition is:
 
-## Launch troubleshooting
+- BIL: 10%
+- IEF: 0%
+- LQD: 25%
+- VT: 65%
 
-- For a busy port or an older running session, stop Streamlit with **Control-C** in its terminal and relaunch from the folder containing `app.py`. Append `--server.port 8502` and open `http://localhost:8502` if you use the alternate port.
-- If pip cannot find a pinned distribution, check `python3.14 --version` (Windows: `py -3.14 --version`) and confirm access to an approved package index. The [validation log](../outputs/validation-summary.md) records the sandbox installation limitation.
-- Reviewed historical charts need an authorized ETF panel. The archived credit signal needs eligible ALFRED evidence. The training workflow remains available without these files.
+This produces **6.80% gross** and **6.65% net**, a **35 bp shortfall** against the client's 7.00% objective.
 
-### Existing training smoke checks
+The ceiling composition is a mathematical upper-bound calculation, not a proposed investment allocation. No target-meeting constrained portfolio is available.
 
-Use **Training and validation** for these previously tested checks. In **Portfolio Builder → Research and data**, compare BIL and VT. Under **Allocation → Custom scenario**, apply 100% Treasury bills and 0% in the other sleeves. Expected net return is **3.35%**, annual volatility **0.50%**, and modeled mandate status **Fail**. The existing **Higher investment costs** stress shows **3.25%** held expected net return. The Analyst and Committee Decision should show **REJECT**. Confirm the export records the active allocation. Restore the default with **Use constrained optimum** and **Reset to default**.
+The committee recommendation is therefore **REJECT, with $0 in live capital authorization**.
 
-The existing **7.50%** training-objective check has a **7.11%** ceiling, a **39 bp** shortfall and no constrained allocation. These routine checks are separate from the student’s official AI-off experiment.
+[ETF methodology](data-methodology.md) · [Decision memo](decision-memo.md)
+
+## 4. Locked Changed-Input Record
+
+The official experiment was conducted separately from routine automated and classroom stress tests.
+
+**Changed input:** Minimum investment-grade bonds increased from 25% to 35%.
+
+The reviewed ETF universe, forward-return assumptions, 60-month risk window, 10% reserve floor, 15 bp recurring fee, 7.00% target and other applicable modeled restrictions remained unchanged.
+
+| Measure | Original result | Independent prediction | Observed result |
+|---|---:|---:|---:|
+| Maximum annual net return | 6.65% | 6.35% | 6.35% |
+| Change in return ceiling | — | −30 bp | −30 bp |
+| Return shortfall to objective | 35 bp | 65 bp implied | 65 bp |
+| Target-meeting allocation | None | None predicted | None |
+| Committee decision | REJECT | REJECT | REJECT |
+
+The student-reported chronology records a pre-run prediction committed at approximately **11:12 a.m. Eastern on November 22, 2026**, followed by execution at approximately **11:23 a.m. Eastern**.
+
+The observed return ceiling declined by 30 basis points, matching the locked numerical prediction at displayed precision. The recommendation remained REJECT.
+
+This was a hypothetical constraint test. It did not permanently change the original Lab 13 mandate.
+
+**Commit evidence:**
+
+- [Original pre-run prediction](https://github.com/alinam06/FIN439-Project2/commit/61df82697e03946f6181c8537a712310f122650e)
+- [Results and reconciliation](https://github.com/alinam06/FIN439-Project2/commit/2d7831df74e5f8ae41fbccf7048c9ea5c3f78167)
+- [Complete experiment record](locked-changed-input-record.md)
+
+Commit history preserves the recorded order. The reported AI-off condition is a student attestation rather than something independently established by the model tests.
+
+## 5. Stress Testing and Financial Sensitivity
+
+The application evaluates changes in investment assumptions across the four required dimensions.
+
+| Dimension | Executed evidence | Investment significance |
+|---|---|---|
+| Forward-return estimates | Reducing LQD and VT assumed returns by 1 percentage point each lowers the original ETF return ceiling to approximately 5.81%. | The proposal becomes more infeasible under weaker credit and equity return assumptions. |
+| Historical estimation window | Fixed-weight benchmark volatility was approximately 9.19% using 36 months and 12.23% using 60 months. | Modeled risk is sensitive to historical sampling. |
+| Recurring costs | Removing the 15 bp investor fee raises the original ETF ceiling to 6.80%, still 20 bp below target. | Lower fees alone do not make the evaluated universe feasible. |
+| Investment constraints | Increasing the bond floor to 35% reduces the modeled ceiling from 6.65% to 6.35%. | A tighter requirement increases the opportunity cost of holding higher-return equities. |
+
+The adverse LQD/VT return shock under the separate 35% bond-floor scenario produces a ceiling of approximately **5.54%**. This is not the same scenario as the 5.81% original-mandate downside result.
+
+The classroom model also provides illustrative correlation, volatility, reserve, combined-adverse and one-time transition-cost scenarios. ETF-specific transaction-cost stress is not implemented.
+
+A return ceiling below the client's net objective is a stopping condition for the evaluated investment proposal.
+
+[Stress-testing methodology](stress-testing-methodology.md) · [Classroom stress results](../outputs/stress-test-results.md)
+
+## 6. Point-in-Time Economic Signal
+
+BAA10Y measures the difference between Moody's seasoned Baa corporate bond yield and the 10-year Treasury yield.
+
+The dated November 21, 2026 review used a FRED observation table, with November 19 as the latest observed date and November 20 as the reported update date.
+
+The reviewed evidence showed a **12 bp widening** over 20 numeric observation steps, excluding the missing November 11 observation.
+
+The signal prompted additional review of LQD credit exposure and VT equity downside. It did not automatically change portfolio weights, expected returns or covariance.
+
+The evidence supports the stated November 21 monitoring decision. It does not establish a complete historical vintage backtest.
+
+[FRED signal result](../outputs/signal-decision-evidence.md) · [Signal data card](signal-data-card.md)
+
+## 7. Data Integrity and Reproduction Boundary
+
+The reviewed ETF model uses four authorized Alpha Vantage monthly adjusted price exports.
+
+The reviewed panel consists of 61 aligned monthly adjusted prices for each ETF, producing 60 monthly returns ending in October 2026.
+
+The financial methodology documents:
+
+- Instrument identity and source provenance.
+- Exchange-session and month-end alignment.
+- Adjusted-close return calculations.
+- Missing, duplicate, invalid and excluded observations.
+- Arithmetic and geometric return conventions.
+- Monthly sample covariance multiplied by 12.
+- Separate forward-looking return assumptions.
+- Recurring fees and net-return calculations.
+- Snapshot dates and limitations of historical point-in-time inference.
+
+Public redistribution permission for the raw ETF histories, aligned dataset, covariance evidence and private derived reports was not established. These materials are therefore excluded from the public repository.
+
+The public Streamlit application runs in **Training and validation** mode without private datasets or credentials.
+
+The reviewed ETF decision and Locked Changed-Input experiment are documented through repository evidence and recorded presentations, but independent numerical reproduction of those specific ETF results requires authorized data.
+
+A later authorized download may contain revisions and may not reproduce the original snapshot exactly.
+
+[Data methodology](data-methodology.md) · [Private data preparation instructions](../data/README.md) · [ETF evidence status](../outputs/etf-analysis-status.md)
+
+## 8. Six Official Grading Categories
+
+| Category | Maximum points | Existing evidence | Remaining verification |
+|---|---:|---|---|
+| Problem definition and decision usefulness | 45 | Client mandate, benchmarks, investment recommendation, committee request and decision memo | Confirm final memo is uploaded and consistent with the app |
+| Data integrity and traceability | 45 | ETF methodology, sample definitions, dated signal, source records and exclusions | Private-data permissions and independent ETF reproduction remain limited |
+| Financial soundness and judgment | 60 | Return bridge, modeled ceiling, baselines, constraints, sensitivity, REJECT recommendation | Verify that presentation and memo distinguish original mandate from hypothetical experiment |
+| Technical execution and usability | 45 | Streamlit application, public deployment, README and automated tests | Independently verify fresh checkout and browser functionality |
+| Validation, sensitivity and reproducibility | 75 | Known-answer tests, recorded 102-test suite, regression evidence, stress analysis and completed locked record | Independent clean-run evidence remains unverified |
+| Professional communication | 30 | README, decision memo draft, validation report draft, video scripts and submission manifest preparation | Verify actual uploaded documents, final video links, transcripts and disclosures |
+| **Total** | **300** | Evidence map only | No grade estimate |
+
+## 9. Validation and AI-Assisted Development
+
+The recorded project validation suite passed **102 tests**, with zero reported failures, errors or skips. Five saved financial artifacts were reported to reproduce byte for byte.
+
+Financial checks include Lab 14 known answers, portfolio arithmetic, covariance calculations, invalid inputs, mandate evaluation, historical-data processing, point-in-time filtering, stress testing and Streamlit application routing.
+
+During application testing, the student encountered:
+
+`TypeError: stress_view() takes 1 positional argument but 3 were given`
+
+Codex-assisted investigation reproduced the routing failure through a regression test. The call interface was corrected, and subsequent recorded tests passed.
+
+The original running process version could not be conclusively identified. The regression and correction are documented without claiming that the exact original execution environment was recovered.
+
+These checks support software correctness under tested inputs but do not resolve financial suitability or guarantee future investment performance.
+
+[Validation and AI-use report](validation-and-ai-use.md) · [Recorded test results](../outputs/validation-summary.md)
+
+## 10. Project Development Evidence
+
+The original Lab 13 mandate and Lab 14 known-answer calculations established the investment problem and core quantitative methods.
+
+The subsequent integrated BoilerPortfolio application added the portfolio construction interface, ETF evidence handling, historical-window analysis, economic signal, stress testing, committee logic and deterministic investment explanations.
+
+The earlier classroom calculation records and GitHub history are evidence of this development. Claims about specific Edition A and Edition B timestamps should be limited to dates that can be established from the actual course record or Git history.
+
+[Original classroom results](../outputs/version_1_results.md) · [Validation chronology](../outputs/validation-summary.md)
+
+## 11. GitHub Submission Checklist
+
+| Deliverable | Status / location |
+|---|---|
+| Application, source code and dependencies | [GitHub repository](https://github.com/alinam06/FIN439-Project2) |
+| README and launch instructions | [README](../README.md) |
+| Public classroom results | [Executed public results](../outputs/version_1_results.md) |
+| Stress methodology and public evidence | [Methodology](stress-testing-methodology.md) · [Results](../outputs/stress-test-results.md) |
+| Data methodology | [Data methodology](data-methodology.md) |
+| Economic signal evidence and card | [Data card](signal-data-card.md) · [Executed signal](../outputs/signal-decision-evidence.md) |
+| Investment judgment | [Investment judgment evidence](investment-judgment.md) |
+| Locked Changed-Input Record | [Completed record](locked-changed-input-record.md) |
+| Investment committee decision memo | [Decision memo](decision-memo.md) — verify uploaded |
+| Validation and AI-use report | [Validation report](validation-and-ai-use.md) — verify uploaded |
+| Three recorded video presentations | Verify accessible YouTube links in submission manifest |
+| Video transcripts | Verify uploaded scripts match actual spoken recordings |
+| Submission manifest | Verify final manifest exists at the repository root and includes all links |
+| Independent cold-run evidence | Not independently verified; do not claim completion without an actual test |
+
+Do not upload restricted ETF histories, private monthly returns, private covariance matrices or reports, API credentials, virtual environments, Python caches or other unnecessary local files.
+
+## 12. Independent Reproducibility Check
+
+A reviewer can test the public application using the GitHub repository and the installation instructions in the README.
+
+The expected public experience is the illustrative classroom model, without requiring private ETF files or API credentials.
+
+Useful observable checks include:
+
+| Check | Expected result |
+|---|---|
+| Application launches | Streamlit opens the public classroom experience |
+| Investment Overview | Shows the 7.00% objective, approximately 7.11% classroom ceiling and $0 live authorization |
+| Equal-weight classroom baseline | 5.81% net return, approximately 8.67% volatility |
+| 60/40 classroom benchmark | 6.65% net return, approximately 10.46% volatility |
+| Constrained classroom candidate | 7.00% modeled net return, approximately 12.10% volatility |
+| Risk & Scenario Analysis | Classroom stress testing available without private ETF data |
+| Committee Decision | Classroom result identified as illustrative, with no live capital authorized |
+| Investment Assistant | Responds using deterministic calculation-based explanations |
+| Committee briefing export | Downloads and reflects the active public scenario |
+
+A hosted deployment or local automated test should not be described as a completed independent fresh-install test.
+
+## 13. Outstanding Investment Approval Gates
+
+Before any investment can be approved, the committee must establish:
+
+1. A defensible expected net return meeting the client's original 7.00% objective under the applicable constraints.
+2. Verified fund eligibility, issuer concentration treatment and permitted investment practices.
+3. Evidence that at least 90% of the portfolio can become available cash within five business days.
+4. An acceptable annual loss tolerance defined by the client.
+5. Appropriate implementation cost estimates, downside resilience and monitoring arrangements.
+6. A separate committee approval for the revised investment proposal.
+
+Until these conditions are satisfied, the reviewed ETF investment decision remains **REJECT with $0 live authorization**.
+
+Paper-testing BoilerPortfolio may continue without granting trading authority.
