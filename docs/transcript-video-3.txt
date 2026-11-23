@@ -1,0 +1,40 @@
+Video 3 — Committee Decision
+
+Draft based on the script used. Verify against the recording before submission.
+
+I used OpenAI ChatGPT and Codex to assist with planning, coding, testing, and documentation.
+
+The analysis and decision are mine. This project is for educational use only and does not constitute investment advice.
+
+0:15–1:05
+
+I'm asking the committee to reject this allocation and authorize zero dollars.
+Here's the case I'm reviewing. It's a five-million-dollar portfolio with 15 years to invest and a seven percent annual net target.
+I raised the bond floor to 35 percent for this custom case. The original floor was 25 percent.
+I'm keeping the 10 percent reserve floor and the 15 basis point annual fee.
+The eight percent company cap still applies where required, and I need evidence for the 90 percent five-day redemption rule.
+
+1:05–1:55
+
+Here's the number driving my decision.
+Even the highest modeled net return is 6.35 percent. That's 65 basis points below target.
+Once I set aside the minimum for bonds and reserves, there's only so much room left for VT, which has the highest assumed return.
+That explains why there are no constrained weights on the screen.
+Equal weight also misses the target. The 60/40 benchmark misses it and holds zero modeled reserve. I use both as comparisons.
+
+1:55–2:55
+
+I wanted to see whether the portfolio's rejection was sensitive to costs, risk estimates, or weaker expected returns.
+Changing the historical window affects estimated volatility, but it does not change the maximum expected return when the forward assumptions and constraints stay the same.
+In this 35 percent bond-floor scenario, the base return ceiling is 6.35 percent.
+When I reduce the expected returns of LQD and VT by one percentage point each, the ceiling falls to 5.54 percent. That's an additional 81 basis point decline, leaving the portfolio about 146 basis points below the seven percent target.
+Even eliminating the 15 basis point recurring investor fee would not close the original return gap.
+These results support the same decision: reject the proposed allocation rather than accept an investment strategy that fails the client's objective.
+
+2:55–4:10
+
+I'd be comfortable testing the process on paper. That carries no trading authority.
+To bring the allocation back to the committee, I'd first need defensible return assumptions or a separately approved set of investments that can reach seven percent net within the bond and reserve rules.
+I'd also verify fund eligibility and issuer exposure, check that 90 percent can be redeemed within five business days, and ask the client what loss they can tolerate.
+Volatility tells me how much returns can vary. It doesn't tell me what loss the client can accept.
+Once those checks are clear, I'd bring the proposal back for a separate vote.

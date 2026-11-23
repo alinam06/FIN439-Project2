@@ -1,0 +1,27 @@
+Video 2 — Code and Validation
+
+Draft based on the script used. Verify against the recording before submission.
+
+I used OpenAI ChatGPT and Codex to assist with planning, coding, testing, and documentation.
+
+The analysis and decision are mine. This project is for educational use only and does not constitute investment advice.
+
+0:15–0:52
+
+Here's what someone gets from the public checkout. I create a Python 3.14 environment, install the requirements, and run Streamlit. The app opens in training mode without an API key. If I want to reproduce the ETF risk results, I need the authorized price file and its matching metadata. I'll keep those two models separate as I walk through the code.
+
+0:52–1:46
+
+This function takes the assumed return on each holding, weights it by the allocation, and subtracts the annual investor fee. For risk, I use covariance because the way the funds move together matters just as much as the risk of each fund on its own. The optimizer asks which mix has the lowest volatility among those that meet the modeled rules and return target. I calculate the ceiling separately. If even the best possible return comes up short, I have no target-meeting mix to show. Equal weight and the 60/40 benchmark give me two references, even when they fail a client rule.
+
+1:46–2:22
+
+The key question here is when I could have seen the number. An observation may be dated earlier than the day it became available. The vintage filter checks availability before letting it into the decision. My November 21 FRED snapshot showed a 12 basis point widening. I used it to flag credit and equity risk for review. Tests cover the revision logic using synthetic records. The snapshot alone can't tell me what was available on earlier dates.
+
+2:22–3:10
+
+I used stress tests to see what could change the outcome. A different covariance window can change estimated volatility. Changing expected returns, recurring fees, or allocation floors can change whether the target is reachable. The classroom model also has a separate one-time trading cost test. For a check with a known answer, I used Lab 14. The benchmark comes back at 6.80 percent return and 10.46 percent volatility on those classroom inputs. The saved validation run records 102 passing tests.
+
+3:10–4:35
+
+For my locked experiment, I changed one thing: the bond floor went from 25 to 35 percent. I held the same four funds, forward returns, 60-month window, reserve floor, fee, and target. My reasoning was that you'd have to move ten percentage points from VT into lower-returning LQD at the return ceiling. Their assumed returns are three percentage points apart, so I expected the portfolio ceiling to drop 30 basis points, from 6.65 to 6.35 percent. I committed that prediction at 11:12 Eastern and ran the experiment at 11:23. The result matched the direction and size of my prediction at the precision shown. I was now 65 basis points short of seven percent. The gap got bigger, but the decision was the same: REJECT, with zero dollars live.

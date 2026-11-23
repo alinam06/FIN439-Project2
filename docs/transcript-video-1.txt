@@ -1,0 +1,36 @@
+Video 1 — Research Evolution
+
+Draft based on the script used. Verify against the recording before submission.
+
+I used OpenAI ChatGPT and Codex to assist with planning, coding, testing, and documentation.
+
+The analysis and decision are mine. This project is for educational use only and does not constitute investment advice.
+
+0:15–0:54
+
+The question I wanted to answer was whether I could invest this client's five million dollars while still meeting their requirements.
+The client is 45, plans to retire at 60, and has a 15-year investment horizon. Their goal is to earn seven percent annually after costs.
+The mandate also requires at least 25 percent in investment-grade bonds, 10 percent in liquid reserves, and no more than eight percent in a single nonexempt company. At least 90 percent of the portfolio must be redeemable within five business days.
+One important limitation is that the client's acceptable annual loss is still undefined.
+
+0:54–1:32
+
+I selected four ETFs, each with a different role.
+BIL provides short-term Treasury exposure for reserves, IEF provides intermediate Treasury bonds, LQD adds investment-grade corporate credit, and VT provides global equity exposure.
+I compared an equal-weight portfolio with a benchmark holding 60 percent VT and 40 percent LQD.
+The benchmark has a higher expected return, but it doesn't satisfy the reserve requirement. That showed me why a portfolio can look attractive financially but still be unsuitable for this client's mandate.
+
+1:32–2:08
+
+For portfolio risk, I used 60 months of ETF return data to estimate volatility and correlations. I kept those historical estimates separate from my forward-looking return assumptions.
+I also examined what information was available at the decision date. The November 21 FRED review showed that the Baa corporate credit spread had widened by 12 basis points.
+That prompted additional review of LQD's credit exposure and VT's downside risk, but it wasn't sufficient evidence to change portfolio weights.
+During development, I also caught an error when navigating the stress-testing page. Codex helped reproduce and correct it, and the fix was checked through automated tests. That reinforced why I needed to verify AI-assisted work instead of simply accepting it.
+
+2:08–2:45
+
+The biggest change in my thinking came when I compared the classroom model with the actual ETF universe.
+The classroom example could reach seven percent under illustrative assumptions. But with BIL, IEF, LQD, and VT, the maximum expected net return was only 6.65 percent, falling 35 basis points short of the client's objective.
+Even eliminating the recurring investor fee wouldn't close that gap.
+My recommendation is to reject the proposed allocation and authorize zero dollars in live capital. I would still paper-test the evaluation process.
+The public repository can reproduce the classroom example, while reproducing the ETF analysis requires authorized data.
