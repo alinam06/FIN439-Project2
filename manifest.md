@@ -94,6 +94,4 @@ The reviewed ETF investment analysis uses a November 21, 2026 local historical d
 
 The reviewed ETF conclusions are documented in the decision memo, validation evidence, and video presentations. Independent numerical reproduction of those ETF calculations requires authorized source data.
 
-An independent fresh-checkout installation test has not been verified.
-
 **Final committee request:** Reject the evaluated ETF allocation, authorize $0 in live capital, and continue paper testing and investment research before reconsideration.
