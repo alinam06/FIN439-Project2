@@ -2,32 +2,126 @@ I used OpenAI ChatGPT and Codex to assist with planning, coding, testing, and do
 
 The analysis and decision are mine. This project is for educational use only and does not constitute investment advice.
 
-# Investment committee memo
+# BoilerPortfolio — Investment Committee Decision Memo
 
-**Decision requested: REJECT the proposed four-ETF allocation under the reviewed assumptions. Authorize $0 in live capital, a live allocation range of 0%–0%.** The best modeled annual net return is **6.65%** against a **7.00%** requirement. The committee may separately authorize a paper test of the investment review process with zero trading authority.
+**Course:** FIN 439 — Project 2  
+**Investment universe:** BIL, IEF, LQD, VT  
+**Decision:** REJECT  
+**Proposed live capital authorization:** $0
 
-## Client and mandate
+## Executive Recommendation
 
-The fictional Lab 13 client is 45, plans to retire at 60, and has $5 million over a 15-year horizon. The portfolio is fully invested and long-only, with no borrowing, short selling, or derivatives, and annual rebalancing. It must hold at least 25% investment-grade bonds and 10% cash or highly liquid government securities. Nonexempt individual company exposure is capped at 8%, with exemptions for diversified funds and U.S. Treasuries. At least 90% must be redeemable within five business days. The client has yet to specify an annual loss limit. [Mandate and methodology](../README.md#client-mandate-and-investment-universe) · [Original mandate in code](../src/portfolio.py)
+I recommend **rejecting the proposed four-ETF allocation under the evaluated assumptions**, with no live capital authorized.
 
-## Investment case
+My client requires a 7.00% annual net return. Under the original investment mandate, the maximum modeled annual net return achievable within the evaluated ETF universe is 6.65%, a shortfall of 35 basis points. Because even the return-maximizing permitted allocation falls below the objective, the constrained minimum-volatility optimizer cannot produce a target-meeting portfolio.
 
-BIL provides Treasury-bill exposure and provisionally counts toward reserves. IEF provides intermediate Treasury duration and LQD provides investment-grade corporate credit. Both provisionally count toward the bond floor. VT provides global equity exposure and has the highest forward-return assumption in the set. These are modeled fund roles pending eligibility review. [Fund and model methodology](data-methodology.md)
+I recommend separately paper-testing BoilerPortfolio's investment evaluation process. This is a recommendation to continue evaluating the process, not authorization to invest.
 
-| Portfolio | Modeled annual net return | Assessment |
-| --- | ---: | --- |
-| Equal weight, 25% in each ETF | 5.04% | Meets the provisional bond and reserve floors. Misses the return objective. |
-| Benchmark, 60% VT and 40% LQD | 6.65% | Misses the return objective and holds zero modeled reserves. |
-| Constrained minimum-volatility candidate | Unavailable | No portfolio meets the modeled floors and the 7.00% net objective. |
+## Client Mandate
 
-The ceiling comes from using 10% BIL for reserves, 25% LQD for bonds and the remaining 65% in VT. LQD has the higher forward assumption of the two qualifying bond sleeves. At the documented forward assumptions, this ceiling mix earns 6.80% before the 15 bp recurring investor fee and 6.65% after it. It is a mathematical upper bound, with no proposed allocation at the required target. Removing the fee alone still leaves a 20 bp shortfall. Fund expenses are already reflected in the forward assumptions. ETF-specific transaction-cost stress is unavailable. [Return reconciliation](rubric-alignment.md#independent-financial-reconciliation) · [ETF model](../src/etf_portfolio.py) · [Stress methodology](stress-testing-methodology.md#reviewed-etf-stress-testing)
+The fictional client is a 45-year-old executive with $5 million available for investment and a 15-year horizon until retirement at age 60.
 
-## Risk, evidence and reconsideration
+The portfolio must satisfy the following requirements:
 
-- **Estimation window.** Annualized portfolio volatility uses sample covariance from monthly adjusted returns, scaled by 12. The fixed-weight benchmark had higher estimated volatility in the 60-month window than in the 36-month window, using the same endpoint. Neither window changed the 6.65% ceiling because forward returns, costs and modeled constraints were fixed. Volatility measures variability and leaves the client's acceptable loss unresolved. [ETF evidence status](../outputs/etf-analysis-status.md)
-- **Downside and constraint sensitivity.** Cutting LQD and VT forward returns by 1 percentage point each lowered the original-case ceiling to 5.81%. The student's separate locked experiment raised only the bond floor from 25% to 35%. The ceiling fell by the predicted 30 bp to 6.35%, leaving a 65 bp shortfall and the same REJECT decision. The experimental floor was hypothetical. The original mandate remains at 25%. [Documented ETF findings](../README.md#key-investment-findings) · [Locked Record reconciliation](validation-and-ai-use.md#locked-changed-input-record)
-- **Credit monitoring.** The dated November 21, 2026 BAA10Y review recorded 12 bp of widening over 20 numeric observation steps. Review LQD spread exposure and VT downside before reconsidering. The signal changes the review agenda, with weights unchanged. Live signal data are unavailable. [Dated signal evidence](../outputs/signal-decision-evidence.md) · [Signal data card](signal-data-card.md)
+| Requirement | Original mandate |
+|---|---|
+| Annual net return objective | 7.00% |
+| Minimum investment-grade bonds | 25% |
+| Minimum liquid reserve | 10% |
+| Individual nonexempt company concentration | Maximum 8% |
+| Five-business-day redeemability | At least 90% |
+| Investment restrictions | Long-only, fully invested; no borrowing, short sales or derivatives |
+| Rebalancing | Annually |
+| Benchmark | 60% global equities / 40% investment-grade bonds |
+| Risk measure | Annualized portfolio volatility |
+| Acceptable annual loss | Not yet defined by the client |
 
-Reopen the proposal only when documented forward assumptions or a separately approved universe can support a modeled allocation at **7.00% net or above** within the applicable floors and hard limits. Stress that candidate before requesting approval. Verify fund eligibility, nonexempt issuer exposure and exemptions, derivatives and leverage policy, five-day access to cash for at least 90% of assets, and implementation costs and rebalancing. Obtain the client's annual loss tolerance and a separate committee vote. Stop if no mix meets the objective, a modeled hard rule fails, or the inputs are invalid. [Committee policy](../src/committee.py) · [Investment judgment methodology](investment-judgment.md)
+The model treats certain fund exposures as provisionally eligible for the bond and reserve requirements. Actual fund eligibility, issuer treatment and liquidity still require verification.
 
-A public checkout reproduces the illustrative classroom case. The reviewed ETF result requires an authorized local snapshot and the documented assumptions. Raw histories and restricted derived files remain private. [Public and private reproduction](../README.md#optional-authorized-data-and-online-research)
+## Investment Universe and Portfolio Comparisons
+
+I selected four ETFs with different investment roles:
+
+- **BIL:** Short-term Treasury-bill exposure, provisionally representing liquid reserves.
+- **IEF:** Intermediate-term U.S. Treasury exposure.
+- **LQD:** Investment-grade corporate bond exposure.
+- **VT:** Diversified global equity exposure.
+
+The evaluated alternatives produce the following modeled results using the reviewed ETF assumptions:
+
+| Portfolio | Expected annual net return | Mandate assessment |
+|---|---:|---|
+| Equal weight: 25% in each ETF | 5.04% | Misses return objective |
+| Benchmark: 60% VT / 40% LQD | 6.65% | Misses return objective and reserve floor |
+| Constrained minimum-volatility portfolio | No feasible solution | No candidate reaches 7.00% net |
+
+The benchmark provides a useful return comparison, but it is not an acceptable investment merely because it has a higher expected return than equal weighting. Its lack of modeled reserves violates the client's liquidity allocation requirement.
+
+## Why the Return Target Is Infeasible
+
+The reviewed forward-looking arithmetic return assumptions, after embedded fund expenses and before the recurring investor charge, are:
+
+| ETF | Assumed annual return |
+|---|---:|
+| BIL | 3.50% |
+| IEF | 4.25% |
+| LQD | 5.00% |
+| VT | 8.00% |
+
+Under the modeled rules, the maximum-return feasible composition places 10% in BIL, 25% in LQD, and 65% in VT. This is a **mathematical upper-bound calculation**, not an approved portfolio recommendation.
+
+The corresponding modeled gross return is 6.80%. After subtracting 15 basis points of recurring annual investor expenses, the maximum net return is 6.65%.
+
+Eliminating those expenses entirely would raise the ceiling to only 6.80%, still 20 basis points below the client's required 7.00%.
+
+**The central problem is not that the optimizer selected the wrong weights. The evaluated universe and assumptions cannot meet the return objective while satisfying the modeled limits.**
+
+## Risk, Sensitivity and Independent Experiment
+
+Historical ETF price observations were used to estimate risk, while separate forward-looking assumptions were used for expected returns. The reviewed dataset contains 60 aligned monthly return observations through October 2026.
+
+Benchmark volatility at unchanged weights was estimated at 9.19% using 36 months of returns and 12.23% using 60 months. This difference demonstrates sensitivity to the estimation period. Changing the covariance window affects modeled risk but does not raise the maximum expected return when return assumptions, costs and investment restrictions remain fixed.
+
+In a downside scenario reducing the assumed returns of both LQD and VT by one percentage point, the original-mandate maximum net return falls to approximately 5.81%.
+
+I also completed a separate Locked Changed-Input experiment. I increased the hypothetical minimum investment-grade bond allocation from the original 25% to 35%, holding the other selected inputs unchanged. My independent prediction was a 30-basis-point decline in the maximum net return.
+
+The observed modeled ceiling declined from 6.65% to 6.35%, increasing the shortfall to 65 basis points. Under the 35% hypothetical scenario, the separate LQD/VT downside test lowers the ceiling to approximately 5.54%. The committee decision remains REJECT.
+
+**The 35% requirement was an experiment, not an approved change to the client's original mandate.**
+
+## Economic Monitoring Signal
+
+I evaluated the BAA10Y corporate credit spread using a dated November 21, 2026 FRED evidence review. The reviewed observations indicated a 12-basis-point widening over 20 numeric observation steps.
+
+This justified further examination of LQD credit risk and VT downside exposure. The signal was used for monitoring and risk review, not as a standalone trading instruction or an automatic change to portfolio weights.
+
+## Implementation Risks and Evidence Limitations
+
+Even a portfolio that passes the numerical optimizer would not automatically qualify for live investment. Outstanding questions include the client's acceptable annual loss, the actual eligibility of the ETF holdings under the mandate, concentration exemptions, leverage and derivatives exposure, five-business-day access to cash, and realistic implementation costs.
+
+Additionally, the reviewed ETF results use a locally authorized historical data snapshot. The public GitHub application reproduces the separate illustrative classroom model; exact ETF reproduction requires access to the authorized underlying dataset. The private price history and restricted derived evidence are not redistributed publicly.
+
+Expected returns are assumptions and are not guaranteed outcomes. Historical volatility does not establish the client's acceptable loss or the likelihood of a specific future drawdown.
+
+## Committee Decision and Reconsideration Conditions
+
+I request that the committee:
+
+1. **Reject the evaluated ETF allocation and authorize $0 in live capital.**
+2. Permit further research and paper testing of the portfolio evaluation process, without trading authority.
+3. Reconsider an investment proposal only when defensible forward-return and expense assumptions, or a separately approved investment universe, support an allocation reaching at least 7.00% net within the applicable mandate.
+4. Require verification of fund eligibility, concentration, redemption, client loss tolerance and implementation before any later approval.
+
+The key lesson of this analysis is that **a mathematically optimized allocation is not necessarily an investable portfolio**. The investment decision must respect both the financial objective and the client's constraints.
+
+## Supporting Evidence
+
+- [README and investment summary](../README.md)
+- [Historical ETF methodology](data-methodology.md)
+- [Investment judgment evidence](investment-judgment.md)
+- [Stress-testing methodology](stress-testing-methodology.md)
+- [Dated economic signal evidence](../outputs/signal-decision-evidence.md)
+- [ETF data and reproduction status](../outputs/etf-analysis-status.md)
+- [Locked Changed-Input Record](locked-changed-input-record.md)
+- [Validation and AI-Use Report](validation-and-ai-use.md)
